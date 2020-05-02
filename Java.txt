@@ -1,0 +1,59 @@
+package com.example.demo;
+
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Dictionary;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Map;
+import java.util.Scanner;
+
+public class newTest {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int t = sc.nextInt();
+		List output = new List();
+		for (int i = 0; i < t; i++) {
+			ArrayList<String> prodDetails = new ArrayList<String>();
+			Scanner sn = new Scanner(System.in);
+			int c = sn.nextInt();
+			for (int j = 0; j < c; j++) {
+				Scanner sm = new Scanner(System.in);
+				String str = sm.nextLine();
+				prodDetails.add(str);
+
+			}
+			GetTopProductDetails(prodDetails, output);
+
+		}
+	//	System.out.println(output);
+
+	}
+
+	private static void GetTopProductDetails(ArrayList<String> prodDetails, List output) {
+
+		Hashtable<String, Integer> keyValuePair = new Hashtable<String, Integer>();
+
+		{	java.util.Iterator<String> itr = prodDetails.iterator();
+
+		while (itr.hasNext()) {
+			if (itr.next() != "top") {
+				String[] str = prodDetails.iterator().next().split(" ");
+				String p = str[0];
+				int n = Integer.parseInt(str[1]);
+				if (keyValuePair.containsKey(p)) {
+					keyValuePair.put(p, keyValuePair.get(p) + n);
+				}
+				else
+				{
+					keyValuePair.put(p, n);
+				}
+
+			}
+		}
+		
+	}
+}
+
+//}
